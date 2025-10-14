@@ -1,0 +1,24 @@
+-- LocalScript (place in StarterPlayerScripts or StarterGui)
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+-- Wait for PlayerGui to be available
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "BlackoutGui"
+screenGui.ResetOnSpawn = false
+screenGui.IgnoreGuiInset = true -- Covers the entire screen
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screenGui.Parent = playerGui
+
+-- Create full-screen black Frame
+local blackoutFrame = Instance.new("Frame")
+blackoutFrame.Name = "BlackoutFrame"
+blackoutFrame.Size = UDim2.new(1, 0, 1, 0)
+blackoutFrame.Position = UDim2.new(0, 0, 0, 0)
+blackoutFrame.BackgroundColor3 = Color3.new(0, 0, 0) -- pure black
+blackoutFrame.BackgroundTransparency = 0 -- fully opaque
+blackoutFrame.ZIndex = 10 -- ensure it's on top of most UI
+blackoutFrame.Parent = screenGui
