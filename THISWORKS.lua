@@ -233,7 +233,7 @@ while tick() < endTime and not stopped do
 	task.wait(0.01)
 end
 
-timerLabel.Text = "Pray me to stop or Enjoy :D"
+timerLabel.Text = "Enjoy :D"
 task.wait(0.15)
 
 if not stopped then
