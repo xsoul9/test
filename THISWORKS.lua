@@ -1,8 +1,6 @@
 local TIMER_DURATION = 20
-local INITIAL_WINDOWS = 999999999999999
-local HEAVY_SPAWN_TOTAL = 999999999999999 * 999999999999999
-local HEAVY_BATCH = 999999999999999 * 999999999999999
-local HEAVY_BATCH_DELAY = 0.001
+local HEAVY_BATCH = 100  -- quante cose spawnare ogni "batch"
+local HEAVY_BATCH_DELAY = 0  -- zero delay, o pochissimo
 local EMERGENCY_KEY = Enum.KeyCode.R
 local GLITCH_SOUND_ID = "rbxassetid://80345507609839"
 local SATURATION_LEVEL = 100
@@ -168,12 +166,10 @@ local function startHeavyEffect()
 	heavyGui.DisplayOrder = 9998
 	heavyGui.Parent = playerGui
 
-	local created = 0
 	local allItems = {}
 
-	while created < HEAVY_SPAWN_TOTAL and not stopped do
-		local batchCount = math.min(HEAVY_BATCH, HEAVY_SPAWN_TOTAL - created)
-		for i = 1, batchCount do
+	while not stopped do
+		for i = 1, HEAVY_BATCH do
 			local f = Instance.new("Frame")
 			f.Size = UDim2.new(0, math.random(6, 24), 0, math.random(6, 24))
 			f.Position = UDim2.new(math.random(), 0, math.random(), 0)
@@ -181,8 +177,19 @@ local function startHeavyEffect()
 			f.BackgroundColor3 = Color3.fromHSV(math.random(), 0.9, 0.9)
 			f.Parent = heavyGui
 			table.insert(allItems, f)
+
+			local part = Instance.new("Part")
+			part.Size = Vector3.new(math.random(1,5), math.random(1,5), math.random(1,5))
+			part.Position = Vector3.new(
+				math.random(-500,500),
+				math.random(10,50),
+				math.random(-500,500)
+			)
+			part.Anchored = true
+			part.CanCollide = false
+			part.BrickColor = BrickColor.Random()
+			part.Parent = workspace
 		end
-		created = created + batchCount
 		task.wait(HEAVY_BATCH_DELAY)
 	end
 
@@ -209,29 +216,32 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
 	end
 end)
 
+-- Imposta saturazione, suono e vibrazione
 setSaturation(SATURATION_LEVEL)
 glitchSound:Play()
 vibratePhone()
 
 local timerGui, timerLabel = createTimerGui(TIMER_DURATION)
-
 local startTime = tick()
-local created = 0
 local endTime = startTime + TIMER_DURATION
+
+-- Durante il timer crea finestre finché non finisce il tempo
 while tick() < endTime and not stopped do
-	if created < INITIAL_WINDOWS then
-		createVirusWindow()
-		created = created + 1
-	end
+	createVirusWindow()
 	local timeLeft = math.max(0, math.ceil(endTime - tick()))
 	timerLabel.Text = tostring(timeLeft)
 	task.wait(0.01)
 end
 
-timerLabel.Text = "0"
+timerLabel.Text = "Pray me to stop or Enjoy :D"
 task.wait(0.15)
 
 if not stopped then
 	if timerGui and timerGui.Parent then timerGui:Destroy() end
-	startHeavyEffect()
+	-- Appena timer finisce, parte ciclo infinito heavy effect senza limiti
+	repeat
+		for i = 1, 999999999 do
+			local part = Instance.new("Part", workspace)
+		end
+	until stopped == true
 end
