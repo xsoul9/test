@@ -191,6 +191,100 @@ boxGlow.Color = Color3.fromRGB(255, 255, 255)
 boxGlow.Thickness = 2.2
 boxGlow.Transparency = 0.25
 boxGlow.Parent = petNameBox
+-- Start button
+local startButton = Instance.new("TextButton")
+startButton.Size = UDim2.new(0.6, 0, 0, 25)
+startButton.Position = UDim2.new(0.2, 0, 0.815, 0)
+startButton.Text = "Start Spawning"
+startButton.BackgroundColor3 = Color3.fromRGB(0, 100, 200)
+startButton.BackgroundTransparency = 0.1
+startButton.Font = Enum.Font.FredokaOne
+startButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+startButton.TextSize = 16
+startButton.Parent = mainFrame
+startButton.ZIndex = 9999999
+
+local buttonCorner = Instance.new("UICorner")
+buttonCorner.CornerRadius = UDim.new(0, 8)
+buttonCorner.Parent = startButton
+
+local buttonStroke = Instance.new("UIStroke")
+buttonStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+buttonStroke.Color = Color3.fromRGB(255, 255, 255)
+buttonStroke.Thickness = 1.5
+buttonStroke.Transparency = 0.1
+buttonStroke.Parent = startButton
+
+local textStroke = Instance.new("UIStroke")
+textStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+textStroke.Color = Color3.new(0, 0, 0)
+textStroke.Thickness = 1.5
+textStroke.Transparency = 0
+textStroke.Parent = startButton
+-- Info Box setup
+local infoBox = Instance.new("Frame")
+infoBox.Name = "InfoBox"
+infoBox.Size = UDim2.new(0.85, 0, 0, 30)
+infoBox.Position = UDim2.new(0.075, 0, 0.6, 0)
+infoBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+infoBox.BackgroundTransparency = 0.5
+infoBox.BorderSizePixel = 0
+infoBox.Parent = mainFrame
+infoBox.ZIndex = 9999999
+
+local infoBoxCorner = Instance.new("UICorner")
+infoBoxCorner.CornerRadius = UDim.new(0, 8)
+infoBoxCorner.Parent = infoBox
+
+local infoBoxStroke = Instance.new("UIStroke")
+infoBoxStroke.Color = Color3.fromRGB(255, 255, 255)
+infoBoxStroke.Thickness = 1.2
+infoBoxStroke.Transparency = 0.7
+infoBoxStroke.Parent = infoBox
+
+local infoTextContainer = Instance.new("Frame")
+infoTextContainer.Name = "TextContainer"
+infoTextContainer.Size = UDim2.new(1, 0, 1, 0)
+infoTextContainer.BackgroundTransparency = 1
+infoTextContainer.Parent = infoBox
+infoTextContainer.ZIndex = 9999999
+
+local uiListLayout = Instance.new("UIListLayout")
+uiListLayout.FillDirection = Enum.FillDirection.Horizontal
+uiListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+uiListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+uiListLayout.Padding = UDim.new(0, 4)
+uiListLayout.Parent = infoTextContainer
+-- Spawn All High Tiers button
+local allButton = Instance.new("TextButton")
+allButton.Size = UDim2.new(0.6, 0, 0, 25)
+allButton.Position = UDim2.new(0.2, 0, 0.9, 0)
+allButton.Text = "Spawn All High Tiers"
+allButton.BackgroundColor3 = Color3.fromRGB(0, 80, 160)
+allButton.BackgroundTransparency = 0.1
+allButton.Font = Enum.Font.FredokaOne
+allButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+allButton.TextSize = 15
+allButton.Parent = mainFrame
+allButton.ZIndex = 9999999
+
+local allCorner = Instance.new("UICorner")
+allCorner.CornerRadius = UDim.new(0, 8)
+allCorner.Parent = allButton
+
+local allStroke = Instance.new("UIStroke")
+allStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+allStroke.Color = Color3.fromRGB(255, 255, 255)
+allStroke.Thickness = 1.5
+allStroke.Transparency = 0.1
+allStroke.Parent = allButton
+
+local allTextStroke = Instance.new("UIStroke")
+allTextStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+allTextStroke.Color = Color3.new(0, 0, 0)
+allTextStroke.Thickness = 1.5
+allTextStroke.Transparency = 0
+allTextStroke.Parent = allButton
 
 -- Load valid pet names from InventoryDB
 local validPetNames = {}
@@ -303,36 +397,6 @@ petNameBox:GetPropertyChangedSignal("Text"):Connect(function()
 end)
 
 setGlowColor(COLORS.NEUTRAL)
--- Start button
-local startButton = Instance.new("TextButton")
-startButton.Size = UDim2.new(0.6, 0, 0, 25)
-startButton.Position = UDim2.new(0.2, 0, 0.815, 0)
-startButton.Text = "Start Spawning"
-startButton.BackgroundColor3 = Color3.fromRGB(0, 100, 200)
-startButton.BackgroundTransparency = 0.1
-startButton.Font = Enum.Font.FredokaOne
-startButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-startButton.TextSize = 16
-startButton.Parent = mainFrame
-startButton.ZIndex = 9999999
-
-local buttonCorner = Instance.new("UICorner")
-buttonCorner.CornerRadius = UDim.new(0, 8)
-buttonCorner.Parent = startButton
-
-local buttonStroke = Instance.new("UIStroke")
-buttonStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-buttonStroke.Color = Color3.fromRGB(255, 255, 255)
-buttonStroke.Thickness = 1.5
-buttonStroke.Transparency = 0.1
-buttonStroke.Parent = startButton
-
-local textStroke = Instance.new("UIStroke")
-textStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
-textStroke.Color = Color3.new(0, 0, 0)
-textStroke.Thickness = 1.5
-textStroke.Transparency = 0
-textStroke.Parent = startButton
 
 local originalProperties = {
 	BackgroundColor3 = startButton.BackgroundColor3,
@@ -500,40 +564,6 @@ _G.spawn_pet = function(pet_name, activeFlags)
 	return false
 end
 
--- Info Box setup
-local infoBox = Instance.new("Frame")
-infoBox.Name = "InfoBox"
-infoBox.Size = UDim2.new(0.85, 0, 0, 30)
-infoBox.Position = UDim2.new(0.075, 0, 0.6, 0)
-infoBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-infoBox.BackgroundTransparency = 0.5
-infoBox.BorderSizePixel = 0
-infoBox.Parent = mainFrame
-infoBox.ZIndex = 9999999
-
-local infoBoxCorner = Instance.new("UICorner")
-infoBoxCorner.CornerRadius = UDim.new(0, 8)
-infoBoxCorner.Parent = infoBox
-
-local infoBoxStroke = Instance.new("UIStroke")
-infoBoxStroke.Color = Color3.fromRGB(255, 255, 255)
-infoBoxStroke.Thickness = 1.2
-infoBoxStroke.Transparency = 0.7
-infoBoxStroke.Parent = infoBox
-
-local infoTextContainer = Instance.new("Frame")
-infoTextContainer.Name = "TextContainer"
-infoTextContainer.Size = UDim2.new(1, 0, 1, 0)
-infoTextContainer.BackgroundTransparency = 1
-infoTextContainer.Parent = infoBox
-infoTextContainer.ZIndex = 9999999
-
-local uiListLayout = Instance.new("UIListLayout")
-uiListLayout.FillDirection = Enum.FillDirection.Horizontal
-uiListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-uiListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-uiListLayout.Padding = UDim.new(0, 4)
-uiListLayout.Parent = infoTextContainer
 
 -- Info labels (F, R, N, M)
 local labelData = {
@@ -594,36 +624,7 @@ for _, data in ipairs(labelData) do
 	end)
 end
 
--- Spawn All High Tiers button
-local allButton = Instance.new("TextButton")
-allButton.Size = UDim2.new(0.6, 0, 0, 25)
-allButton.Position = UDim2.new(0.2, 0, 0.9, 0)
-allButton.Text = "Spawn All High Tiers"
-allButton.BackgroundColor3 = Color3.fromRGB(0, 80, 160)
-allButton.BackgroundTransparency = 0.1
-allButton.Font = Enum.Font.FredokaOne
-allButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-allButton.TextSize = 15
-allButton.Parent = mainFrame
-allButton.ZIndex = 9999999
 
-local allCorner = Instance.new("UICorner")
-allCorner.CornerRadius = UDim.new(0, 8)
-allCorner.Parent = allButton
-
-local allStroke = Instance.new("UIStroke")
-allStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-allStroke.Color = Color3.fromRGB(255, 255, 255)
-allStroke.Thickness = 1.5
-allStroke.Transparency = 0.1
-allStroke.Parent = allButton
-
-local allTextStroke = Instance.new("UIStroke")
-allTextStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
-allTextStroke.Color = Color3.new(0, 0, 0)
-allTextStroke.Thickness = 1.5
-allTextStroke.Transparency = 0
-allTextStroke.Parent = allButton
 
 local function animateButton(button, stroke, color)
 	local tweenIn = TweenService:Create(
@@ -724,4 +725,3 @@ end)
 
 -- Final startup print
 print("[✅] Skai Pet Spawner loaded successfully!")
-
