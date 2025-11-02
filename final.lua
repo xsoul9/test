@@ -78,7 +78,7 @@ mainFrame.Position = UDim2.new(0.5, -150, 0.4, -105)
 mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
 mainFrame.BackgroundTransparency = 1
 mainFrame.BorderSizePixel = 0
-mainFrame.ZIndex = 1
+mainFrame.ZIndex = 9999
 mainFrame.Parent = screenGui
 
 local uiCorner = Instance.new("UICorner")
@@ -157,6 +157,7 @@ titleLabel.Font = Enum.Font.FredokaOne
 titleLabel.TextSize = 20
 titleLabel.TextColor3 = Color3.fromRGB(240, 240, 255)
 titleLabel.Parent = mainFrame
+titleLabel.ZIndex = 9999999
 
 -- Textbox for pet name input
 local petNameBox = Instance.new("TextBox")
@@ -171,6 +172,7 @@ petNameBox.PlaceholderText = "Enter Pet Name to Spawn"
 petNameBox.Text = ""
 petNameBox.ClearTextOnFocus = false
 petNameBox.Parent = mainFrame
+petNameBox.ZIndex = 9999999
 
 local boxCorner = Instance.new("UICorner")
 boxCorner.CornerRadius = UDim.new(0, 6)
@@ -312,6 +314,7 @@ startButton.Font = Enum.Font.FredokaOne
 startButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 startButton.TextSize = 16
 startButton.Parent = mainFrame
+startButton.ZIndex = 9999999
 
 local buttonCorner = Instance.new("UICorner")
 buttonCorner.CornerRadius = UDim.new(0, 8)
@@ -506,6 +509,7 @@ infoBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 infoBox.BackgroundTransparency = 0.5
 infoBox.BorderSizePixel = 0
 infoBox.Parent = mainFrame
+infoBox.ZIndex = 9999999
 
 local infoBoxCorner = Instance.new("UICorner")
 infoBoxCorner.CornerRadius = UDim.new(0, 8)
@@ -522,6 +526,7 @@ infoTextContainer.Name = "TextContainer"
 infoTextContainer.Size = UDim2.new(1, 0, 1, 0)
 infoTextContainer.BackgroundTransparency = 1
 infoTextContainer.Parent = infoBox
+infoTextContainer.ZIndex = 9999999
 
 local uiListLayout = Instance.new("UIListLayout")
 uiListLayout.FillDirection = Enum.FillDirection.Horizontal
@@ -600,6 +605,7 @@ allButton.Font = Enum.Font.FredokaOne
 allButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 allButton.TextSize = 15
 allButton.Parent = mainFrame
+allButton.ZIndex = 9999999
 
 local allCorner = Instance.new("UICorner")
 allCorner.CornerRadius = UDim.new(0, 8)
